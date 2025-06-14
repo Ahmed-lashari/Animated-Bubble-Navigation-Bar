@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class BottomNavItem {
+class BubbleItem {
   final String lable;
   final Widget? iconWidget;
   final IconData? icon;
 
-  const BottomNavItem({required this.lable, this.iconWidget, this.icon});
+  const BubbleItem({required this.lable, this.iconWidget, this.icon});
 }

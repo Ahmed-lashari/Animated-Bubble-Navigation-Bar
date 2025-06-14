@@ -1,24 +1,28 @@
-import 'package:animated_bubble_navigation_bar/core/entities/enums/shapes.dart';
+library animated_bubble_navigation_bar;
+
+import 'src/core/entities/enums/alignemnts.dart';
+import 'src/core/entities/enums/shapes.dart';
+import 'src/model/bottom_nav_bar_decoration.dart';
+import 'src/model/bottom_nav_item.dart';
+
 import 'package:flutter/material.dart';
 
-import '../../core/entities/enums/alignemnts.dart';
-import '../../core/model/bottom_nav_bar_decoration.dart';
-import '../../core/model/bottom_nav_item.dart';
-import '../../core/providers/providers.dart';
+import 'src/view/widgets/combined_widgets.dart';
+import 'src/viewmodel/providers.dart';
 
 class AnimatedBubbleNavBottomBar extends StatelessWidget {
   final List<Widget> screens;
-  final List<BottomNavItem> menuItems;
-  final BubbleDecoration bobbleDecoration;
+  final List<BubbleItem> menuItems;
+  final BubbleDecoration bubbleDecoration;
   const AnimatedBubbleNavBottomBar(
       {super.key,
       required this.screens,
       required this.menuItems,
-      this.bobbleDecoration = const BubbleDecoration()});
+      this.bubbleDecoration = const BubbleDecoration()});
 
   @override
   Widget build(BuildContext context) {
-    final align = bobbleDecoration.bubbleAlignment.alignment;
+    final align = bubbleDecoration.bubbleAlignment.alignment;
     if (screens.length != menuItems.length) {
       throw Exception(
           "Configuration Error: The number of screens (${screens.length}) does not match the number of bottom navigation items (${menuItems.length}). \n"
@@ -28,7 +32,7 @@ class AnimatedBubbleNavBottomBar extends StatelessWidget {
     debugPrint('home nav bar tabs screen');
 
     return Stack(children: [
-      _buildBodyWidgets(align, bobbleDecoration.bubbleItemSize),
+      _buildBodyWidgets(align, bubbleDecoration.bubbleItemSize),
       _buildBottomnavBar(align)
     ]);
   }
@@ -69,7 +73,7 @@ class AnimatedBubbleNavBottomBar extends StatelessWidget {
           : 1,
       bottom: align == Alignment.bottomCenter ? 0 : 1,
       child: _CustomBottomNavBar(
-          items: menuItems, bobbleDecoration: bobbleDecoration),
+          items: menuItems, bobbleDecoration: bubbleDecoration),
     );
   }
 }
@@ -77,7 +81,7 @@ class AnimatedBubbleNavBottomBar extends StatelessWidget {
 // =========================================================================================
 
 class _CustomBottomNavBar extends StatefulWidget {
-  final List<BottomNavItem> items;
+  final List<BubbleItem> items;
   final BubbleDecoration bobbleDecoration;
 
   const _CustomBottomNavBar(
@@ -114,7 +118,6 @@ class _CustomBottomNavBarState extends State<_CustomBottomNavBar> {
                 children: List.generate(
                   widget.items.length,
                   (index) {
-                    // debugPrint("list items creating");
                     return GestureDetector(
                       onTap: () {
                         if (selectedIndexNotifier.value != index) {
@@ -145,13 +148,15 @@ class _CustomBottomNavBarState extends State<_CustomBottomNavBar> {
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  _buildIcon(item, isSelected) ??
+                                  CustomWidgets.buildIcon(
+                                          bubble, item, isSelected) ??
                                       SizedBox.shrink(),
                                   AnimatedSize(
                                     duration: bubble.duration,
                                     curve: Curves.easeInOut,
                                     child: (isSelected)
-                                        ? _buildLabel(item.lable, isSelected)
+                                        ? CustomWidgets.buildLabel(
+                                            bubble, item.lable, isSelected)
                                         : SizedBox.shrink(),
                                   ),
                                 ],
@@ -167,41 +172,5 @@ class _CustomBottomNavBarState extends State<_CustomBottomNavBar> {
             ),
           ),
         ));
-  }
-
-  // ======================================= WIDGETS =======================================
-
-  Widget? _buildIcon(BottomNavItem item, bool isSelected) {
-    final bubble = widget.bobbleDecoration;
-    if ((item.icon == null) && (item.iconWidget == null) && (!isSelected)) {
-      return _buildLabel(" ${item.lable[0].toUpperCase()}", isSelected);
-    } else if (item.icon != null) {
-      return Icon(
-        item.icon,
-        color: isSelected
-            ? bubble.selectedBubbleIconColor
-            : bubble.unSelectedBubbleIconColor,
-        size: bubble.iconSize,
-      );
-    } else if (item.iconWidget != null) {
-      return item.iconWidget;
-    }
-    return null;
-  }
-
-  Widget _buildLabel(String label, bool isSelected) {
-    final bubble = widget.bobbleDecoration;
-    return Padding(
-      padding:
-          EdgeInsets.only(left: isSelected ? bubble.innerIconLabelSpacing : 0),
-      child: Text(
-        label,
-        style: TextStyle(
-            fontSize: bubble.labelStyle.fontSize ?? 12,
-            fontStyle: bubble.labelStyle.fontStyle,
-            color: bubble.labelStyle.color ?? bubble.selectedBubbleLabelColor,
-            fontWeight: FontWeight.bold),
-      ),
-    );
   }
 }

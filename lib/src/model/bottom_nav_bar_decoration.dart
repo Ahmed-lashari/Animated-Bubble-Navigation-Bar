@@ -1,7 +1,7 @@
-import 'package:animated_bubble_navigation_bar/core/entities/enums/shapes.dart';
 import 'package:flutter/material.dart';
 
-import '../entities/enums/alignemnts.dart';
+import '../core/entities/enums/alignemnts.dart';
+import '../core/entities/enums/shapes.dart';
 
 class BubbleDecoration {
   // =========================== COLORS ===========================
