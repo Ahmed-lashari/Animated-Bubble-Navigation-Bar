@@ -7,10 +7,16 @@ import 'src/core/models/decoration.dart';
 import 'src/view/widgets/combined_widgets.dart';
 import 'src/viewmodel/providers.dart';
 
+// widgets
 export 'src/view/widgets/combined_widgets.dart';
+// providers
 export 'src/viewmodel/providers.dart';
+//enums
 export 'src/core/entities/enums/alignemnts.dart';
 export 'src/core/entities/enums/shapes.dart';
+//models
+export 'src/core/models/bubble_model.dart';
+export 'src/core/models/decoration.dart';
 
 class AnimatedBubbleNavBottomBar extends StatelessWidget {
   final List<Widget> screens;

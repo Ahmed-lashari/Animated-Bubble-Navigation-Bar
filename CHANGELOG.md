@@ -1,3 +1,9 @@
+## [1.0.3] - Import Bug Fixed
+
+> Import Bug Fixed
+- 🧩 Import bugs related to `BubbleItem` and `BubbleDecoration` were fixed.
+
+
 ## [1.0.2] - Initial release
 
 > Initial Publish
