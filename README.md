@@ -1,5 +1,3 @@
-
-
 # 🫧 Animated Bubble Navigation Bar
 
 A **lightweight**, **customizable**, and **responsive** bottom navigation bar for Flutter with smooth bubble animations.
