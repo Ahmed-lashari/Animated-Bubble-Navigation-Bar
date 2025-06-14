@@ -1,4 +1,4 @@
-## [1.0.0+1] - Initial release
+## [1.0.1] - Initial release
 
 > Initial Publish
 - 🎉 First release of `animated_bubble_navigation_bar`.

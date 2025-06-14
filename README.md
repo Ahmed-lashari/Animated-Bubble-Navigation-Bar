@@ -1,146 +1,197 @@
-# Animated Bubble Navigation Bar
 
-A lightweight and customizable animated bottom navigation bar for Flutter apps.
-**Perfect for modern UI/UX with bubble-style animation and smooth transitions.**
+
+# 🫧 Animated Bubble Navigation Bar
+
+A **lightweight**, **customizable**, and **responsive** bottom navigation bar for Flutter with smooth bubble animations.
+
+Perfect for modern apps with stylish transitions, adaptive layouts, and full customization.
 
 ---
 
 ## ✨ Features
 
-* Clean, responsive design
-* Bubble-style animation
-* Easy to integrate
-* Fully customizable (icons, colors, active/inactive states)
-* Supports multiple tabs.
-* Ideal for dashboard and tab-based navigation
+* 🔹 Clean, modern design
+* 🫧 Bubble-style animations
+* 🛠 Fully customizable (icons, labels, colors, shape)
+* 🔁 Seamless tab switching
+* 📱 Responsive across devices (phones & tablets)
+* 🧩 Easy integration & minimal setup
+
+---
+
+## 📸 Preview
+
+| Demo                          | Preview                                                                                                                                 |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| 💡 Default Bubble Animation   | ![default](https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/default-bubble.gif?raw=true)   |
+| 🎨 Custom Icons & Labels      | ![custom](https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/bubble-items.gif?raw=true)      |
+| 📱 Responsive Across Devices  | ![responsive](https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/bubble-shapes.gif?raw=true) |
+| 🔁 Seamless Tab Switching     | ![seamless](https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/clean-square.gif?raw=true)    |
+| 🧱 Square/Alternative Layouts | ![square](https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/square-bubbles.gif?raw=true)    |
 
 ---
 
 ## 🚀 Getting Started
 
-Add the package to your `pubspec.yaml`:
+### 1️⃣ Add to `pubspec.yaml`
 
 ```yaml
 dependencies:
   animated_bubble_navigation_bar: ^<latest_version>
 ```
 
-Import it in your Dart code:
+### 2️⃣ Import the package
 
 ```dart
 import 'package:animated_bubble_navigation_bar/animated_bubble_navigation_bar.dart';
 ```
 
----
-
-## Demo
-## 📦  Example
+### 3️⃣ Basic Usage
 
 ```dart
 Scaffold(
-     body: AnimatedBubbleNavBottomBar(
-         screens: [ Screen1(), Screen2(), Screen3() ],
-         menuItems: [
-           BottomNavItem(lable: "Home", icon: Icons.home),
-           BottomNavItem(lable: "Settings", icon: Icons.settings),
-           BottomNavItem(lable: "Person", icon: Icons.person)
-         ],
-         bobbleDecoration: BubbleDecoration()
-     )
+  body: AnimatedBubbleNavBottomBar(
+    screens: [
+      Screen1(),
+      Screen2(),
+      Screen3(),
+    ],
+    menuItems: [
+      BottomNavItem(label: "Home", icon: Icons.home),
+      BottomNavItem(label: "Settings", icon: Icons.settings),
+      BottomNavItem(label: "Profile", icon: Icons.person),
+    ],
+    bobbleDecoration: BubbleDecoration(), // Decoration
+  ),
 );
 ```
 
 ---
 
-## 📸 Demos
 
-### 💡 Default Bubble Animation
+### 4️⃣ Styling Colors and Icons
 
-A smooth, classic bubble animation on tab switch.
-![Default Demo](assets/bubble_shapes/default-bubble.gif)
+```dart
+bubbleDecoration: BubbleDecoration(
+  // Background color of the bar
+  backgroundColor: Colors.deepPurple,
+
+  // Bubble/Item colors
+  selectedBubbleBackgroundColor: Colors.white,
+  unSelectedBubbleBackgroundColor: Colors.grey.shade800,
+
+  // Label colors
+  selectedBubbleLabelColor: Colors.black,
+  unSelectedBubbleLabelColor: Colors.white70,
+
+  // Icon colors
+  selectedBubbleIconColor: Colors.black,
+  unSelectedBubbleIconColor: Colors.white,
+
+  // Label style
+  labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+
+  // Icon size
+  iconSize: 28,
+
+),
+
+```
+
+### 5️⃣ Advance Layout and Behavior
+
+```dart
+bubbleDecoration: BubbleDecoration(
+  // Space between icon and label
+  innerIconLabelSpacing: 6,
+
+  // Size of bubble item container
+  bubbleItemSize: 12,
+
+  // Scrolling physics
+  physics: BouncingScrollPhysics(),
+
+  // Animation duration
+  duration: Duration(milliseconds: 350),
+
+  // Margin & padding
+  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+
+  // Animation curve
+  curve: Curves.easeInOutBack,
+
+  // Bubble position (e.g., bottomCenter, bottomLeft, bottomRight)
+  bubbleAlignment: BubbleAlignment.bottomCenter,
+
+  // Shape of bubble (circular or square)
+  shapes: BubbleShape.square,
+
+  // Optional radius for square bubbles
+  squareBordersRadius: 12,
+),
+```
 
 ---
 
-### 🎨 Custom Icons & Animated Labels
+## 📘 API Reference
 
-Customize icons, labels, and bubble animations to match your brand.
-![Custom-Bubbles](assets/bubble_shapes/bubble-items.gif)
-
----
-
-### 📱 Responsive Across Devices
-
-Tested on tablets and phones with adaptive layouts.
-![Curved-Bubbles](assets/bubble_shapes/bubble-shapes.gif)
+| Property           | Type                          | Description                            |
+| ------------------ | ----------------------------- | -------------------------------------- |
+| `screens`          | `List<Widget>`                | Screens shown for each tab             |
+| `menuItems`        | `List<BottomNavItem>`         | Navigation items (icon + label)        |
+| `bobbleDecoration` | `BubbleDecoration` (optional) | Custom animation, colors, shapes, etc. |
 
 ---
 
-### 🔁 Seamless Tab Switching
+## 🧱 Customization
 
-Snappy and animated transitions between navigation items.
-![Clean-Squared](assets/bubble_shapes/clean-square.gif)
-
----
-
-### 🧱 Alternative Bubble Layouts
-
-Try square or other non-rounded bubble styles for unique UIs.
-![Squared-Bubbles](assets/bubble_shapes/square-bubbles.gif)
+* Icon & label styles
+* Active/inactive colors
+* Bubble shapes (rounded, square)
+* Animation curve, duration, and more
 
 ---
 
+## 🛤 Coming Soon
 
-## 📚 API Reference
-
-| Property          | Type                  | Description                |
-| ----------------- | --------------------- | -------------------------- |
-| `screens`           | `List<Widget> ` | List of Screen   |
-| `menuItems`           | `List<BottomNavItem>` | List of navigation items   |
-| `bobbleDecoration`           | `BubbleDecoration()` | Decoration  |
+* 🔔 Badge support
+* 🧭 Top TabBar support
+* ➕ FAB (Notched) support
+* 🌀 More animation styles
 
 ---
 
-## ✅ Coming Soon
+## 🧑‍💻 Developer
 
-* Badge support
-* TAB Bar Support
-* Notched FAB support
-* More animation styles
+**Muhammad Ahmed Lashari**
+[LinkedIn](https://www.linkedin.com/in/muhammad-ahmed-lashari-826761289/) | [GitHub](https://github.com/Ahmed-lashari) | 📧 [Email](mailto:ahmedlashari.official@gmail.com)
 
 ---
-
-## 🛠 Developer
-
-Developed and maintained by Muhammad Ahmed Lashari.
-
-
-
----
-
 
 ## 🤝 Contributing
 
-We welcome contributions from the Flutter community to make **Animated Bubble Navigation Bar** more powerful and flexible. Whether it’s fixing bugs, adding features, improving documentation, or suggesting enhancements—your input is valued.
+We welcome contributions! To contribute:
 
-If you're interested in contributing:
+1. Fork the repo
+2. Create a new branch
+3. Make your changes with proper testing
+4. Open a PR with a clear description
 
-* 📂 Fork the repository
-* 📌 Create a feature branch
-* ✅ Make your changes and ensure they are well-tested
-* 🔄 Submit a pull request with a clear description
-
-For larger changes or new features, please consider opening an issue first to discuss the proposal.
+For new features, open an issue first to discuss ideas before implementation.
 
 ---
 
-## 📬 Contact & Community
+## ⭐️ Support
 
-For discussions, feature requests, or professional connections:
+If you find this package helpful:
 
-* 💼 Connect on  [LinkedIn](https://www.linkedin.com/in/muhammad-ahmed-lashari-826761289/)
-* 💻 Follow on [GitHub](https://github.com/Ahmed-lashari)
-* 📧 Reach out via [Email](ahmedlashari.official@gmail.com)
+* Leave a ⭐️ on GitHub
+* Share with the Flutter community
+* Submit feature requests or bug reports
 
-Let’s build something great together.
+---
+
+Let’s build something beautiful — one bubble at a time! 🫧
 
 ---
