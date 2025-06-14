@@ -6,16 +6,6 @@ Perfect for modern apps with stylish transitions, adaptive layouts, and full cus
 
 ---
 
-## ✨ Features
-
-* 🔹 Clean, modern design
-* 🫧 Bubble-style animations
-* 🛠 Fully customizable (icons, labels, colors, shape)
-* 🔁 Seamless tab switching
-* 📱 Responsive across devices (phones & tablets)
-* 🧩 Easy integration & minimal setup
-
----
 
 ## 📸 Preview
 
@@ -26,6 +16,17 @@ Perfect for modern apps with stylish transitions, adaptive layouts, and full cus
 | 📱 Responsive Across Devices  | ![responsive](https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/bubble-shapes.gif?raw=true) |
 | 🔁 Seamless Tab Switching     | ![seamless](https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/clean-square.gif?raw=true)    |
 | 🧱 Square/Alternative Layouts | ![square](https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/square-bubbles.gif?raw=true)    |
+
+---
+
+## ✨ Features
+
+* 🔹 Clean, modern design
+* 🫧 Bubble-style animations
+* 🛠 Fully customizable (icons, labels, colors, shape)
+* 🔁 Seamless tab switching
+* 📱 Responsive across devices (phones & tablets)
+* 🧩 Easy integration & minimal setup
 
 ---
 
