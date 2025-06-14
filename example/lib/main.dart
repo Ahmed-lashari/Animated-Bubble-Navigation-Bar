@@ -1,8 +1,8 @@
 import 'package:animated_bubble_navigation_bar/animated_bubble_navigation_bar.dart';
 import 'package:animated_bubble_navigation_bar/src/core/entities/enums/alignemnts.dart';
 import 'package:animated_bubble_navigation_bar/src/core/entities/enums/shapes.dart';
-import 'package:animated_bubble_navigation_bar/src/model/bottom_nav_bar_decoration.dart';
-import 'package:animated_bubble_navigation_bar/src/model/bottom_nav_item.dart';
+import 'package:animated_bubble_navigation_bar/src/core/models/bubble_model.dart';
+import 'package:animated_bubble_navigation_bar/src/core/models/decoration.dart';
 import 'package:flutter/material.dart';
 
 void main() {

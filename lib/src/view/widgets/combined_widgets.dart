@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../model/bottom_nav_bar_decoration.dart';
-import '../../model/bottom_nav_item.dart';
+import '../../core/models/bubble_model.dart';
+import '../../core/models/decoration.dart';
 
 class CustomWidgets {
   static Widget? buildIcon(

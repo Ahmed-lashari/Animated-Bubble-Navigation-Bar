@@ -1,14 +1,16 @@
-library animated_bubble_navigation_bar;
-
 import 'src/core/entities/enums/alignemnts.dart';
 import 'src/core/entities/enums/shapes.dart';
-import 'src/model/bottom_nav_bar_decoration.dart';
-import 'src/model/bottom_nav_item.dart';
-
 import 'package:flutter/material.dart';
-
+import 'src/core/errors/list_exception.dart';
+import 'src/core/models/bubble_model.dart';
+import 'src/core/models/decoration.dart';
 import 'src/view/widgets/combined_widgets.dart';
 import 'src/viewmodel/providers.dart';
+
+export 'src/view/widgets/combined_widgets.dart';
+export 'src/viewmodel/providers.dart';
+export 'src/core/entities/enums/alignemnts.dart';
+export 'src/core/entities/enums/shapes.dart';
 
 class AnimatedBubbleNavBottomBar extends StatelessWidget {
   final List<Widget> screens;
@@ -24,12 +26,8 @@ class AnimatedBubbleNavBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final align = bubbleDecoration.bubbleAlignment.alignment;
     if (screens.length != menuItems.length) {
-      throw Exception(
-          "Configuration Error: The number of screens (${screens.length}) does not match the number of bottom navigation items (${menuItems.length}). \n"
-          "Each navigation item must have a corresponding screen widget. Please ensure both lists are of the same length.");
+      throw BubleExceptions.listSizesException;
     }
-
-    debugPrint('home nav bar tabs screen');
 
     return Stack(children: [
       _buildBodyWidgets(align, bubbleDecoration.bubbleItemSize),
