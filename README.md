@@ -1,6 +1,6 @@
 # 🫧 Animated Bubble Navigation Bar
 
-A **lightweight**, **customizable**, and **responsive** bottom navigation bar for Flutter with smooth bubble animations.
+A **lightweight**, **customizable**, and **responsive** navigation bar for Flutter with smooth bubble animations.
 
 Perfect for modern apps with stylish transitions, adaptive layouts, and full customization.
 
@@ -91,8 +91,7 @@ bubbleDecoration: BubbleDecoration(
   labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
 
   // Icon size
-  iconSize: 28,
-
+  iconSize: 28
 ),
 
 ```
@@ -139,7 +138,122 @@ bubbleDecoration: BubbleDecoration(
 | ------------------ | ----------------------------- | -------------------------------------- |
 | `screens`          | `List<Widget>`                | Screens shown for each tab             |
 | `menuItems`        | `List<BottomNavItem>`         | Navigation items (icon + label)        |
-| `bobbleDecoration` | `BubbleDecoration` (optional) | Custom animation, colors, shapes, etc. |
+| `bobbleDecoration` | `BubbleDecoration` | Custom animation, colors, shapes, etc. |
+| `initialIndex` | `int` | Initial index of the bubble in nav bar. |
+
+
+
+
+### 🧩 `BottomNavItem`
+
+Represents an item inside the custom bottom navigation bar. Used to define label and icon representation for each tab.
+
+```dart
+class BottomNavItem {
+  final String lable;
+  final Widget? iconWidget;
+  final IconData? icon;
+
+  const BottomNavItem({
+    required this.lable,
+    this.iconWidget,
+    this.icon,
+  });
+}
+```
+
+| Property     | Type        | Description                                                                 |
+| ------------ | ----------- | --------------------------------------------------------------------------- |
+| `lable`      | `String`    | The text label shown under or beside the icon.                              |
+| `iconWidget` | `Widget?`   | A custom widget for the icon. Takes precedence over `icon` if provided.     |
+| `icon`       | `IconData?` | Standard icon from Flutter’s `Icons` class. Used if `iconWidget` is absent. |
+
+> **Use case:** Allows flexibility to use either a Flutter `IconData` or a fully customized widget (like an SVG or image) for your bottom nav icons.
+
+---
+
+### 🎨 `BubbleDecoration`
+
+Controls the visual appearance and animations of the entire bubble-style bottom navigation bar. Use this class to fully customize how each navigation item looks and behaves.
+
+```dart
+class BubbleDecoration {
+  final Color selectedBubbleBackgroundColor;
+  final Color unSelectedBubbleBackgroundColor;
+
+  final Color selectedBubbleLabelColor;
+  final Color unSelectedBubbleLabelColor;
+
+  final Color selectedBubbleIconColor;
+  final Color unSelectedBubbleIconColor;
+
+  final TextStyle labelStyle;
+  final double iconSize;
+
+  final Color backgroundColor;
+  final double innerIconLabelSpacing;
+  final double bubbleItemSize;
+  final ScrollPhysics physics;
+  final Duration duration;
+  final EdgeInsets margin;
+  final EdgeInsets padding;
+  final Curve curve;
+
+  final BubbleAlignment bubbleAlignment;
+  final BubbleShape shapes;
+
+  final double? squareBordersRadius;
+}
+```
+
+#### 🎨 Colors
+
+| Property                          | Type    | Description                                             |
+| --------------------------------- | ------- | ------------------------------------------------------- |
+| `selectedBubbleBackgroundColor`   | `Color` | Background color of the active (selected) bubble item.  |
+| `unSelectedBubbleBackgroundColor` | `Color` | Background color of inactive (unselected) bubble items. |
+| `selectedBubbleLabelColor`        | `Color` | Text color of the active item label.                    |
+| `unSelectedBubbleLabelColor`      | `Color` | Text color of inactive item labels.                     |
+| `selectedBubbleIconColor`         | `Color` | Icon color of the active bubble item.                   |
+| `unSelectedBubbleIconColor`       | `Color` | Icon color of inactive bubble items.                    |
+| `backgroundColor`                 | `Color` | Overall background color of the navigation bar.         |
+
+#### 📝 Text
+
+| Property     | Type        | Description                                  |
+| ------------ | ----------- | -------------------------------------------- |
+| `labelStyle` | `TextStyle` | Font size, weight, and style for all labels. |
+
+#### 🖼️ Icon & Item Size
+
+| Property                | Type     | Description                                                        |
+| ----------------------- | -------- | ------------------------------------------------------------------ |
+| `iconSize`              | `double` | Size of the icon inside each bubble.                               |
+| `innerIconLabelSpacing` | `double` | Space between icon and label within a bubble item.                 |
+| `bubbleItemSize`        | `double` | Used for layout spacing/scaling – affects visual balance of items. |
+
+#### ⚙️ Behavior & Animation
+
+| Property   | Type            | Description                                                         |
+| ---------- | --------------- | ------------------------------------------------------------------- |
+| `physics`  | `ScrollPhysics` | Defines how scrolling behaves if bar is scrollable.                 |
+| `duration` | `Duration`      | Duration of animations when switching between items.                |
+| `curve`    | `Curve`         | Animation curve used for transitions (e.g., `easeIn`, `bounceOut`). |
+
+#### 🧱 Padding & Margin
+
+| Property  | Type         | Description                               |
+| --------- | ------------ | ----------------------------------------- |
+| `margin`  | `EdgeInsets` | External spacing around each bubble item. |
+| `padding` | `EdgeInsets` | Internal spacing within each bubble item. |
+
+#### 🔁 Layout & Shape
+
+| Property              | Type              | Description                                                                |
+| --------------------- | ----------------- | -------------------------------------------------------------------------- |
+| `bubbleAlignment`     | `BubbleAlignment` | Defines how the nav bar is aligned (e.g., bottom ,left, right etc.).       |
+| `shapes`              | `BubbleShape`     | Defines shape style – e.g., circular or square.                            |
+| `squareBordersRadius` | `double?`         | This controls the Bubbles borders radius (corner roundness). |
 
 ---
 

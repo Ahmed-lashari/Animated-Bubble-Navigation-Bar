@@ -1,8 +1,4 @@
 import 'package:animated_bubble_navigation_bar/animated_bubble_navigation_bar.dart';
-import 'package:animated_bubble_navigation_bar/src/core/entities/enums/alignemnts.dart';
-import 'package:animated_bubble_navigation_bar/src/core/entities/enums/shapes.dart';
-import 'package:animated_bubble_navigation_bar/src/core/models/bubble_model.dart';
-import 'package:animated_bubble_navigation_bar/src/core/models/decoration.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -44,10 +40,11 @@ class _HomeScreenState extends State<HomeScreen> {
           // Screen3(),
         ],
         menuItems: [
-          BubbleItem(lable: "Home"),
-          BubbleItem(lable: "Settings"),
-          BubbleItem(lable: "Profile"),
+          // BubbleItem(lable: "Home"),
+          // BubbleItem(lable: "Settings"),
+          // BubbleItem(lable: "Profile"),
         ],
+        initialIndex: 1,
         bubbleDecoration: BubbleDecoration(
           selectedBubbleBackgroundColor: Colors.white70,
           unSelectedBubbleBackgroundColor: Colors.deepPurple,
