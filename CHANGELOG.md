@@ -1,7 +1,6 @@
 ## [1.0.4] - Initial Index Support & Code Enhancements
 
 > Enhancements & Improvements
-
 * 🎯 Added `initialIndex` property to allow setting the default selected tab.
 * 🛡️ Improved internal state handling to ensure safer and more predictable navigation behavior.
 * 🧼 Minor code refactoring and cleanup for better maintainability.
