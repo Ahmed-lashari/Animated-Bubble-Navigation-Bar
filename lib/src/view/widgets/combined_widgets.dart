@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/models/bubble_model.dart';
 import '../../core/models/decoration.dart';
 
-class CustomWidgets {
+class BubbleWidgets {
   static Widget? buildIcon(
       BubbleDecoration bubble, BubbleItem item, bool isSelected) {
     if ((item.icon == null) && (item.iconWidget == null) && (!isSelected)) {

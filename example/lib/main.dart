@@ -32,44 +32,100 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AnimatedBubbleNavBottomBar(
-        screens: [
-          // Screen1(),
-          // Screen2(),
-          // Screen3(),
-        ],
-        menuItems: [
-          // BubbleItem(lable: "Home"),
-          // BubbleItem(lable: "Settings"),
-          // BubbleItem(lable: "Profile"),
-        ],
-        initialIndex: 1,
-        bubbleDecoration: BubbleDecoration(
-          selectedBubbleBackgroundColor: Colors.white70,
-          unSelectedBubbleBackgroundColor: Colors.deepPurple,
-          selectedBubbleLabelColor: Colors.black87,
-          unSelectedBubbleLabelColor: Colors.white70,
-          selectedBubbleIconColor: Colors.black87,
-          unSelectedBubbleIconColor: Colors.white70,
-          labelStyle: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              fontStyle: FontStyle.normal),
-          iconSize: 30,
-          backgroundColor: Colors.deepPurpleAccent,
-          innerIconLabelSpacing: 5,
-          bubbleItemSize: 10,
-          physics: const BouncingScrollPhysics(),
-          duration: const Duration(milliseconds: 300),
-          margin: const EdgeInsets.all(5),
-          padding: const EdgeInsets.all(5),
-          curve: Curves.easeIn,
-          bubbleAlignment: BubbleAlignment.bottomCenter,
-          shapes: BubbleShape.circular,
-          squareBordersRadius: 50,
+    return SafeArea(
+      child: Scaffold(
+        body: AnimatedBubbleNavBar(
+          screens: [
+            Screen1(),
+            Screen2(),
+            Screen3(),
+          ],
+          menuItems: [
+            BubbleItem(lable: "Home", icon: Icons.home),
+            BubbleItem(lable: "Settings", icon: Icons.settings),
+            BubbleItem(lable: "Profile", icon: Icons.person),
+          ],
+          bubbleDecoration: BubbleDecoration(
+            // Colors
+            selectedBubbleBackgroundColor: Colors.white70,
+            unSelectedBubbleBackgroundColor: Colors.deepPurple,
+            selectedBubbleLabelColor: Colors.black87,
+            unSelectedBubbleLabelColor: Colors.white70,
+            selectedBubbleIconColor: Colors.black87,
+            unSelectedBubbleIconColor: Colors.white70,
+            backgroundColor: Colors.deepPurpleAccent,
+
+            // Text
+            labelStyle: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontStyle: FontStyle.normal),
+
+            // Icon
+            iconSize: 30,
+            innerIconLabelSpacing: 5,
+            bubbleItemSize: 30,
+
+            // Behavior & Animation
+            curve: Curves.easeIn,
+            duration: const Duration(milliseconds: 300),
+            physics: const BouncingScrollPhysics(),
+            screenTransitionDuration: Duration(seconds: 1),
+            screenTransitionBuilder: (child, animation) {
+              return SlideTransition(
+                position: Tween<Offset>(begin: Offset(0, 1), end: Offset.zero)
+                    .animate(animation),
+                child: child,
+              );
+            },
+
+            // Padding & Margin
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+
+            // Layout & Shape
+            bubbleAlignment: BubbleAlignment.bottomCenter,
+            shapes: BubbleShape.square,
+            squareBordersRadius: 50,
+          ),
         ),
       ),
+    );
+  }
+}
+
+class Screen1 extends StatelessWidget {
+  const Screen1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.amber,
+      body: SingleChildScrollView(child: Text("Screen 1")),
+    );
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  const Screen2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      body: Text("Screen 2"),
+    );
+  }
+}
+
+class Screen3 extends StatelessWidget {
+  const Screen3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.red,
+      body: SingleChildScrollView(child: Text("Screen 3")),
     );
   }
 }

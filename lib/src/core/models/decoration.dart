@@ -4,6 +4,7 @@ import '../entities/enums/shapes.dart';
 
 class BubbleDecoration {
   // =========================== COLORS ===========================
+  final Color backgroundColor;
   // bubble background
   final Color selectedBubbleBackgroundColor;
   final Color unSelectedBubbleBackgroundColor;
@@ -21,14 +22,16 @@ class BubbleDecoration {
 
   // =========================== ICONS ===========================
   final double iconSize;
+  final double innerIconLabelSpacing;
+  final double bubbleItemSize;
 
   // =========================== GENERAL STYLING ===========================
 
-  final Color backgroundColor;
-  final double innerIconLabelSpacing;
-  final double bubbleItemSize;
   final ScrollPhysics physics;
   final Duration duration;
+  final Duration? screenTransitionDuration;
+  final AnimatedSwitcherTransitionBuilder? screenTransitionBuilder;
+
   final EdgeInsets margin;
   final EdgeInsets padding;
   final Curve curve;
@@ -69,6 +72,8 @@ class BubbleDecoration {
     this.bubbleItemSize = 10,
     this.physics = const BouncingScrollPhysics(),
     this.duration = const Duration(milliseconds: 300),
+    this.screenTransitionDuration,
+    this.screenTransitionBuilder,
     this.margin = const EdgeInsets.all(5),
     this.padding = const EdgeInsets.all(5),
     this.curve = Curves.easeIn,

@@ -1,5 +1,3 @@
-// widgets
-export 'src/view/widgets/combined_widgets.dart';
 // providers
 export 'src/viewmodel/providers.dart';
 //enums

@@ -49,7 +49,7 @@ import 'package:animated_bubble_navigation_bar/animated_bubble_navigation_bar.da
 
 ```dart
 Scaffold(
-  body: AnimatedBubbleNavBottomBar(
+  body: AnimatedBubbleNavBar(
     screens: [
       Screen1(),
       Screen2(),
@@ -60,7 +60,7 @@ Scaffold(
       BottomNavItem(label: "Settings", icon: Icons.settings),
       BottomNavItem(label: "Profile", icon: Icons.person),
     ],
-    bobbleDecoration: BubbleDecoration(), // Decoration
+    bubbleDecoration: BubbleDecoration(), // Decoration
   ),
 );
 ```
@@ -165,8 +165,8 @@ class BottomNavItem {
 | Property     | Type        | Description                                                                 |
 | ------------ | ----------- | --------------------------------------------------------------------------- |
 | `lable`      | `String`    | The text label shown under or beside the icon.                              |
-| `iconWidget` | `Widget?`   | A custom widget for the icon. Takes precedence over `icon` if provided.     |
-| `icon`       | `IconData?` | Standard icon from Flutter’s `Icons` class. Used if `iconWidget` is absent. |
+| `icon`       | `IconData?` | Standard icon from Flutter’s `Icons` class. |
+| `iconWidget` | `Widget?`   | A custom widget for the icon. Takes precedence after `icon`, if not provided.     |
 
 > **Use case:** Allows flexibility to use either a Flutter `IconData` or a fully customized widget (like an SVG or image) for your bottom nav icons.
 
@@ -178,30 +178,38 @@ Controls the visual appearance and animations of the entire bubble-style bottom 
 
 ```dart
 class BubbleDecoration {
+
+  // Colors
   final Color selectedBubbleBackgroundColor;
   final Color unSelectedBubbleBackgroundColor;
-
   final Color selectedBubbleLabelColor;
   final Color unSelectedBubbleLabelColor;
-
   final Color selectedBubbleIconColor;
   final Color unSelectedBubbleIconColor;
-
-  final TextStyle labelStyle;
-  final double iconSize;
-
   final Color backgroundColor;
+
+  // Text
+  final TextStyle labelStyle;
+
+  // Icon
+  final double iconSize;
   final double innerIconLabelSpacing;
   final double bubbleItemSize;
-  final ScrollPhysics physics;
+
+  // // Behavior & Animation
+  final Curve curve;
   final Duration duration;
+  final ScrollPhysics physics;
+  final Duration? screenTransitionDuration;
+  final AnimatedSwitcherTransitionBuilder? screenTransitionBuilder;
+
+  // Margin & Padding
   final EdgeInsets margin;
   final EdgeInsets padding;
-  final Curve curve;
 
+  // Layout & Shape
   final BubbleAlignment bubbleAlignment;
   final BubbleShape shapes;
-
   final double? squareBordersRadius;
 }
 ```
@@ -239,6 +247,11 @@ class BubbleDecoration {
 | `physics`  | `ScrollPhysics` | Defines how scrolling behaves if bar is scrollable.                 |
 | `duration` | `Duration`      | Duration of animations when switching between items.                |
 | `curve`    | `Curve`         | Animation curve used for transitions (e.g., `easeIn`, `bounceOut`). |
+| `screenTransitionDuration`    | `Duration`         | Animation duration used for transitions between screens/tabs. |
+| `screenTransitionBuilder`    | `Widget Function(Widget, Animation<double>)`         | Defines the animation used when switching between screens; defaults to a FadeTransition. |
+
+> ⚙️ If `screenTransitionDuration` is `null` (default), screen/tab transitions will occur instantly without any animation.
+
 
 #### 🧱 Padding & Margin
 
