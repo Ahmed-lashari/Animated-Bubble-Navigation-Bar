@@ -1,3 +1,16 @@
+
+
+## [1.0.6] – Screen Transition Animation Support
+
+> **Documentation Update**
+
+* Added detailed usage instructions for the newly introduced `screenTransitionBuilder` and `screenTransitionDuration` in `BubbleDecoration`.
+* Showcased **4 modern, beautiful transition examples** with matching vibrant color schemes.
+* Included a note emphasizing that the transition effects are **customizable** and **scalable** — empowering developers to create their own stunning animations.
+
+
+---
+
 ## [1.0.5] - Screen Transition Animation & Stability Improvements
 
 > New Features & Enhancements  

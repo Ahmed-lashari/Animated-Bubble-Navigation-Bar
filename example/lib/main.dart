@@ -101,7 +101,7 @@ class Screen1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber,
-      body: SingleChildScrollView(child: Text("Screen 1")),
+      body: Text("Screen 1"),
     );
   }
 }
@@ -125,7 +125,7 @@ class Screen3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.red,
-      body: SingleChildScrollView(child: Text("Screen 3")),
+      body: Text("Screen 3"),
     );
   }
 }

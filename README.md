@@ -7,7 +7,7 @@ Perfect for modern apps with stylish transitions, adaptive layouts, and full cus
 ---
 
 
-## 📸 Preview
+## 📸 Bubble Preview
 
 | Demo                          | Preview                                                                                                                                 |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19,6 +19,142 @@ Perfect for modern apps with stylish transitions, adaptive layouts, and full cus
 
 ---
 
+## 📸 Navigation Preview with Code
+
+### 💡 Scaling + Fading and Sliding
+
+<table>
+<tr>
+<td>
+
+```dart
+screenTransitionBuilder: (child, animation) {
+  final curved = CurvedAnimation(parent: animation, curve: Curves.easeOutExpo);
+  return FadeTransition(
+    opacity: curved,
+    child: ScaleTransition(
+      scale: Tween<double>(begin: 0.95, end: 1).animate(curved),
+      child: SlideTransition(
+        position: Tween<Offset>(begin: Offset(0.1, 0.1), end: Offset.zero)
+            .animate(curved),
+        child: child,
+      ),
+    ),
+  );
+},
+```
+
+</td>
+<td>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/default-bubble.gif" width="250"/>
+</td>
+</tr>
+</table>
+
+---
+
+### 🎨 Flip + Fade
+
+<table>
+<tr>
+<td>
+
+```dart
+screenTransitionBuilder: (child, animation) {
+  final rotate = Tween<double>(begin: 1, end: 0).animate(animation);
+  return AnimatedBuilder(
+    animation: rotate,
+    builder: (context, childWidget) {
+      final isUnder = (rotate.value > 0.5);
+      final angle = (1 - rotate.value) * 3.14;
+      return Transform(
+        transform: Matrix4.rotationY(angle),
+        alignment: Alignment.center,
+        child: Opacity(
+          opacity: isUnder ? 0.5 : 1,
+          child: childWidget,
+        ),
+      );
+    },
+    child: child,
+  );
+},
+```
+
+</td>
+<td>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/bubble-items.gif" width="250"/>
+</td>
+</tr>
+</table>
+
+---
+
+### 📱 Blur & Fade
+
+<table>
+<tr>
+<td>
+
+```dart
+screenTransitionBuilder: (child, animation) {
+  return FadeTransition(
+    opacity: animation,
+    child: BackdropFilter(
+      filter: ImageFilter.blur(
+        sigmaX: (1 - animation.value) * 10,
+        sigmaY: (1 - animation.value) * 10,
+      ),
+      child: child,
+    ),
+  );
+},
+```
+
+</td>
+<td>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/bubble-shapes.gif" width="250"/>
+</td>
+</tr>
+</table>
+
+---
+
+### 🔁 Slide + Elastic
+
+<table>
+<tr>
+<td>
+
+```dart
+screenTransitionBuilder: (child, animation) {
+    final curved =
+        CurvedAnimation(parent: animation, curve: Curves.elasticOut);
+    return SlideTransition(
+      position: Tween<Offset>(
+        begin: Offset(1.0, 0.0),
+        end: Offset.zero,
+      ).animate(curved),
+      child: child,
+    );
+  },
+```
+
+</td>
+<td>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/clean-square.gif" width="250"/>
+</td>
+</tr>
+</table>
+
+---
+#### To enable the transition effects, you must set the `screenTransitionDuration` (default is null, meaning no animation).
+
+#### This duration activates the `screenTransitionBuilder` and controls how long the transition animation takes between screens.
+
+---
+
+> The transition effects are customizable and scalable — bring your creativity to craft even more stunning and futuristic animations tailored to your app's unique vibe.
 ## ✨ Features
 
 * 🔹 Clean, modern design
