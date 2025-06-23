@@ -1,5 +1,3 @@
-
-
 ## [1.0.6] – Screen Transition Animation Support
 
 > **Documentation Update**
