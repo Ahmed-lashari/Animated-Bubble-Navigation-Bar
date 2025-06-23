@@ -46,7 +46,7 @@ screenTransitionBuilder: (child, animation) {
 
 </td>
 <td>
-<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/default-bubble.gif" width="250"/>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/1.gif?raw=true" width="250"/>
 </td>
 </tr>
 </table>
@@ -83,7 +83,7 @@ screenTransitionBuilder: (child, animation) {
 
 </td>
 <td>
-<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/bubble-items.gif" width="250"/>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/2.gif?raw=true" width="250"/>
 </td>
 </tr>
 </table>
@@ -113,7 +113,7 @@ screenTransitionBuilder: (child, animation) {
 
 </td>
 <td>
-<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/bubble-shapes.gif" width="250"/>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/3.gif?raw=true" width="250"/>
 </td>
 </tr>
 </table>
@@ -142,7 +142,7 @@ screenTransitionBuilder: (child, animation) {
 
 </td>
 <td>
-<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/raw/main/assets/bubble_shapes/clean-square.gif" width="250"/>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/4.gif?raw=true" width="250"/>
 </td>
 </tr>
 </table>
