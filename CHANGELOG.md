@@ -1,3 +1,11 @@
+## [1.0.7] – Documentation
+
+> **Updated Documentation**
+
+* Updated the trnasition demo previews from the documentation.
+
+---
+
 ## [1.0.6] – Screen Transition Animation Support
 
 > **Documentation Update**

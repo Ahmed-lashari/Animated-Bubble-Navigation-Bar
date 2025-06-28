@@ -19,13 +19,13 @@ Perfect for modern apps with stylish transitions, adaptive layouts, and full cus
 
 ---
 
-## 📸 Navigation Preview with Code
+## 📸 Screen Transition Preview with Code
 
-### 💡 Scaling + Fading and Sliding
+### 💡 Scaling + Fading and Sliding Effect
 
-<table>
-<tr>
-<td>
+
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/1.gif?raw=true" width="250"/>
+
 
 ```dart
 screenTransitionBuilder: (child, animation) {
@@ -44,20 +44,12 @@ screenTransitionBuilder: (child, animation) {
 },
 ```
 
-</td>
-<td>
-<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/1.gif?raw=true" width="250"/>
-</td>
-</tr>
-</table>
-
 ---
 
-### 🎨 Flip + Fade
+### 🎨 Flip + Fade Effect
 
-<table>
-<tr>
-<td>
+
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/2.gif?raw=true" width="250"/>
 
 ```dart
 screenTransitionBuilder: (child, animation) {
@@ -81,20 +73,13 @@ screenTransitionBuilder: (child, animation) {
 },
 ```
 
-</td>
-<td>
-<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/2.gif?raw=true" width="250"/>
-</td>
-</tr>
-</table>
 
 ---
 
-### 📱 Blur & Fade
+### 📱 Blur & Fade Effect
 
-<table>
-<tr>
-<td>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/3.gif?raw=true" width="250"/>
+
 
 ```dart
 screenTransitionBuilder: (child, animation) {
@@ -111,20 +96,13 @@ screenTransitionBuilder: (child, animation) {
 },
 ```
 
-</td>
-<td>
-<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/3.gif?raw=true" width="250"/>
-</td>
-</tr>
-</table>
 
 ---
 
-### 🔁 Slide + Elastic
+### 🔁 Slide + Elastic Effect
 
-<table>
-<tr>
-<td>
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/4.gif?raw=true" width="250"/>
+
 
 ```dart
 screenTransitionBuilder: (child, animation) {
@@ -140,12 +118,6 @@ screenTransitionBuilder: (child, animation) {
   },
 ```
 
-</td>
-<td>
-<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/navigation_transitions/4.gif?raw=true" width="250"/>
-</td>
-</tr>
-</table>
 
 ---
 #### To enable the transition effects, you must set the `screenTransitionDuration` (default is null, meaning no animation).
@@ -263,6 +235,10 @@ bubbleDecoration: BubbleDecoration(
 
   // Optional radius for square bubbles
   squareBordersRadius: 12,
+
+  // Screen Transitions
+  screenTransitionDuration: null,
+  screenTransitionBuilder: null,
 ),
 ```
 
@@ -273,24 +249,24 @@ bubbleDecoration: BubbleDecoration(
 | Property           | Type                          | Description                            |
 | ------------------ | ----------------------------- | -------------------------------------- |
 | `screens`          | `List<Widget>`                | Screens shown for each tab             |
-| `menuItems`        | `List<BottomNavItem>`         | Navigation items (icon + label)        |
-| `bobbleDecoration` | `BubbleDecoration` | Custom animation, colors, shapes, etc. |
+| `menuItems`        | `List<BubbleNavItem>`         | Navigation items (icon + label)        |
+| `bubbleDecoration` | `BubbleDecoration` | Custom animation, colors, shapes, etc. |
 | `initialIndex` | `int` | Initial index of the bubble in nav bar. |
 
 
 
 
-### 🧩 `BottomNavItem`
+### 🧩 `BubbleItem`
 
 Represents an item inside the custom bottom navigation bar. Used to define label and icon representation for each tab.
 
 ```dart
-class BottomNavItem {
+class BubbleItem {
   final String lable;
   final Widget? iconWidget;
   final IconData? icon;
 
-  const BottomNavItem({
+  const BubbleItem({
     required this.lable,
     this.iconWidget,
     this.icon,
@@ -424,12 +400,6 @@ class BubbleDecoration {
 
 ---
 
-## 🧑‍💻 Developer
-
-**Muhammad Ahmed Lashari**
-[LinkedIn](https://www.linkedin.com/in/muhammad-ahmed-lashari-826761289/) | [GitHub](https://github.com/Ahmed-lashari) | 📧 [Email](mailto:ahmedlashari.official@gmail.com)
-
----
 
 ## 🤝 Contributing
 
@@ -448,9 +418,18 @@ For new features, open an issue first to discuss ideas before implementation.
 
 If you find this package helpful:
 
-* Leave a ⭐️ on GitHub
+* Leave a ⭐️ on GitHub and Like on Pub.dev
 * Share with the Flutter community
 * Submit feature requests or bug reports
+
+---
+
+
+## 🧑‍💻 Developer
+
+**Muhammad Ahmed Lashari**
+[LinkedIn](https://www.linkedin.com/in/muhammad-ahmed-lashari-826761289/) | [GitHub](https://github.com/Ahmed-lashari) | 📧 [Email](mailto:ahmedlashari.official@gmail.com)
+
 
 ---
 
