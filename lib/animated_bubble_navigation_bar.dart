@@ -1,7 +1,6 @@
 // providers
 export 'src/viewmodel/providers.dart';
 //enums
-export 'src/core/entities/enums/alignemnts.dart';
 export 'src/core/entities/enums/shapes.dart';
 //models
 export 'src/core/models/bubble_model.dart';
