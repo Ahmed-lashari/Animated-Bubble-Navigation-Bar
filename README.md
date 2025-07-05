@@ -19,6 +19,11 @@ Perfect for modern apps with stylish transitions, adaptive layouts, and full cus
 
 ---
 
+## ↕️ Orientation & Alignment Support
+
+![orientation_support](assets/orientation_alignment/orientation_support.gif)
+---
+
 ## 📸 Screen Transition Preview with Code
 
 ### 💡 Scaling + Fading and Sliding Effect
@@ -120,9 +125,7 @@ screenTransitionBuilder: (child, animation) {
 
 
 ---
-#### To enable the transition effects, you must set the `screenTransitionDuration` (default is null, meaning no animation).
-
-#### This duration activates the `screenTransitionBuilder` and controls how long the transition animation takes between screens.
+#### To manage the transition effects duration, you must set the `screenTransitionDuration` (default is Duration(milliseconds: 300)).
 
 ---
 
@@ -131,7 +134,7 @@ screenTransitionBuilder: (child, animation) {
 
 * 🔹 Clean, modern design
 * 🫧 Bubble-style animations
-* 🛠 Fully customizable (icons, labels, colors, shape)
+* 🛠 Fully customizable (icons, labels, colors, shape, alignment, orientation)
 * 🔁 Seamless tab switching
 * 📱 Responsive across devices (phones & tablets)
 * 🧩 Easy integration & minimal setup
@@ -164,9 +167,9 @@ Scaffold(
       Screen3(),
     ],
     menuItems: [
-      BottomNavItem(label: "Home", icon: Icons.home),
-      BottomNavItem(label: "Settings", icon: Icons.settings),
-      BottomNavItem(label: "Profile", icon: Icons.person),
+      BubbleItem(label: "Home", icon: Icons.home),
+      BubbleItem(label: "Settings", icon: Icons.settings),
+      BubbleItem(label: "Profile", icon: Icons.person),
     ],
     bubbleDecoration: BubbleDecoration(), // Decoration
   ),
@@ -196,7 +199,9 @@ bubbleDecoration: BubbleDecoration(
   unSelectedBubbleIconColor: Colors.white,
 
   // Label style
-  labelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+  selectedBubbleLabelStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+  
+  unSelectedBubbleLabelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
 
   // Icon size
   iconSize: 28
@@ -211,34 +216,39 @@ bubbleDecoration: BubbleDecoration(
   // Space between icon and label
   innerIconLabelSpacing: 6,
 
-  // Size of bubble item container
-  bubbleItemSize: 12,
-
   // Scrolling physics
   physics: BouncingScrollPhysics(),
 
-  // Animation duration
-  duration: Duration(milliseconds: 350),
+  // Size of bubble item container
+  bubbleItemSize: 12,
+
+  // Bubble Animation duration
+  bubbleDuration: Duration(milliseconds: 350),
+
+  // Screen Transitions
+  screenTransitionDuration: null,
+  screenTransitionBuilder: null,
 
   // Margin & padding
   margin: EdgeInsets.symmetric(horizontal: 6, vertical: 8),
   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
 
   // Animation curve
-  curve: Curves.easeInOutBack,
+  curveIn: Curves.easeIn,
+  curveOut: Curves.easeOut,
 
-  // Bubble position (e.g., bottomCenter, bottomLeft, bottomRight)
-  bubbleAlignment: BubbleAlignment.bottomCenter,
+  // Axis orientation
+  curveOut: Axis.horizontal,
+
+  // Bubble position (e.g., bottomCenter, topRight, etc)
+  alignment: Alignemnt.centerLeft,
 
   // Shape of bubble (circular or square)
   shapes: BubbleShape.square,
 
   // Optional radius for square bubbles
-  squareBordersRadius: 12,
+  squareBordersRadius: null,
 
-  // Screen Transitions
-  screenTransitionDuration: null,
-  screenTransitionBuilder: null,
 ),
 ```
 
@@ -249,7 +259,7 @@ bubbleDecoration: BubbleDecoration(
 | Property           | Type                          | Description                            |
 | ------------------ | ----------------------------- | -------------------------------------- |
 | `screens`          | `List<Widget>`                | Screens shown for each tab             |
-| `menuItems`        | `List<BubbleNavItem>`         | Navigation items (icon + label)        |
+| `menuItems`        | `List<BubbleItem>`         | Navigation items (iconData + icon widget + label)        |
 | `bubbleDecoration` | `BubbleDecoration` | Custom animation, colors, shapes, etc. |
 | `initialIndex` | `int` | Initial index of the bubble in nav bar. |
 
@@ -292,35 +302,40 @@ Controls the visual appearance and animations of the entire bubble-style bottom 
 class BubbleDecoration {
 
   // Colors
+  final Color backgroundColor;
   final Color selectedBubbleBackgroundColor;
   final Color unSelectedBubbleBackgroundColor;
   final Color selectedBubbleLabelColor;
   final Color unSelectedBubbleLabelColor;
   final Color selectedBubbleIconColor;
   final Color unSelectedBubbleIconColor;
-  final Color backgroundColor;
 
-  // Text
-  final TextStyle labelStyle;
+  // TextStyles
+  final TextStyle selectedBubbleLabelStyle;
+  final TextStyle unSelectedBubbleLabelStyle;
 
-  // Icon
+  // Icons
   final double iconSize;
   final double innerIconLabelSpacing;
   final double bubbleItemSize;
 
-  // // Behavior & Animation
-  final Curve curve;
-  final Duration duration;
+  // Behavior & Animation
   final ScrollPhysics physics;
+  final Duration bubbleDuration;
+  final Curve curveIn;
+  final Curve curveOut;
+
+  // Screen Transition
   final Duration? screenTransitionDuration;
   final AnimatedSwitcherTransitionBuilder? screenTransitionBuilder;
 
-  // Margin & Padding
+  // Padding & Margin
   final EdgeInsets margin;
   final EdgeInsets padding;
 
   // Layout & Shape
-  final BubbleAlignment bubbleAlignment;
+  final Axis axis;
+  final Alignment alignment;
   final BubbleShape shapes;
   final double? squareBordersRadius;
 }
@@ -342,7 +357,8 @@ class BubbleDecoration {
 
 | Property     | Type        | Description                                  |
 | ------------ | ----------- | -------------------------------------------- |
-| `labelStyle` | `TextStyle` | Font size, weight, and style for all labels. |
+| `selectedBubbleLabelStyle` | `TextStyle` | Font size, weight, and style for selected bubble. |
+| `unSelectedBubbleLabelStyle` | `TextStyle` | Font size, weight, and style for unselected bubbles. |
 
 #### 🖼️ Icon & Item Size
 
@@ -358,11 +374,11 @@ class BubbleDecoration {
 | ---------- | --------------- | ------------------------------------------------------------------- |
 | `physics`  | `ScrollPhysics` | Defines how scrolling behaves if bar is scrollable.                 |
 | `duration` | `Duration`      | Duration of animations when switching between items.                |
-| `curve`    | `Curve`         | Animation curve used for transitions (e.g., `easeIn`, `bounceOut`). |
+| `curveIn`    | `Curve`         | Animation curve used for transitions (e.g., `easeIn`, `bounceOut`). |
+| `curveOut`    | `Curve`         | Animation curve used for transitions (e.g., `easeIn`, `bounceOut`). |
 | `screenTransitionDuration`    | `Duration`         | Animation duration used for transitions between screens/tabs. |
 | `screenTransitionBuilder`    | `Widget Function(Widget, Animation<double>)`         | Defines the animation used when switching between screens; defaults to a FadeTransition. |
 
-> ⚙️ If `screenTransitionDuration` is `null` (default), screen/tab transitions will occur instantly without any animation.
 
 
 #### 🧱 Padding & Margin
@@ -376,7 +392,8 @@ class BubbleDecoration {
 
 | Property              | Type              | Description                                                                |
 | --------------------- | ----------------- | -------------------------------------------------------------------------- |
-| `bubbleAlignment`     | `BubbleAlignment` | Defines how the nav bar is aligned (e.g., bottom ,left, right etc.).       |
+| `axis`     | `Axis` | Defines the orientation of nav bar (e.g., vertically , horizontally) .       |
+| `alignment`     | `Alignment` | Defines how the nav bar is aligned (e.g., bottom ,left, right etc.).       |
 | `shapes`              | `BubbleShape`     | Defines shape style – e.g., circular or square.                            |
 | `squareBordersRadius` | `double?`         | This controls the Bubbles borders radius (corner roundness). |
 
@@ -388,13 +405,13 @@ class BubbleDecoration {
 * Active/inactive colors
 * Bubble shapes (rounded, square)
 * Animation curve, duration, and more
+* Bottom Navigation Bar, Top Tab Bar, Side Menu Bar
 
 ---
 
 ## 🛤 Coming Soon
 
 * 🔔 Badge support
-* 🧭 Top TabBar support
 * ➕ FAB (Notched) support
 * 🌀 More animation styles
 

@@ -1,3 +1,14 @@
+## [1.1.0] – Orientation & Alignment Update
+
+> **Enhancements and Fixes**
+
+* Added vertical orientation support for tab bar and tab bar toolbar.
+* Added center-left and center-right alignment options.
+* Fixed all known bugs from the previous version.
+* Improved and expanded documentation.
+
+---
+
 ## [1.0.7] – Documentation
 
 > **Updated Documentation**
