@@ -21,7 +21,8 @@ Perfect for modern apps with stylish transitions, adaptive layouts, and full cus
 
 ## ↕️ Orientation & Alignment Support
 
-![orientation_support](assets/orientation_alignment/orientation_support.gif)
+<img src="https://github.com/Ahmed-lashari/Animated-Bubble-Navigation-Bar/blob/main/assets/orientation_alignment/orientation_support.gif?raw=true" width ="250">
+
 ---
 
 ## 📸 Screen Transition Preview with Code
